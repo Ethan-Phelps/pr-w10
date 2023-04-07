@@ -1,0 +1,49 @@
+<!--
+Using HTML, Bootstrap, and JavaScript create a single page website that contains the following:
+    A Bootstrap styled table representing your choice of data. -/
+    A Bootstrap styled form that allows a user to add a new row to the table when clicking on submit. -/
+-->
+<html>
+    <head>
+        <title>page1</title>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    </head>
+    <body class="bg-dark">
+        <script>
+            function newtr() {
+                var x = document.getElementById("ptable").rows.length
+                document.getElementById("ptable").insertRow(x);
+                document.getElementById("ptable").rows[x].insertCell(0);
+                document.getElementById("ptable").rows[x].insertCell(1);
+                document.getElementById("ptable").rows[x].cells[0].innerHTML=document.getElementById("pcnm").value;
+                document.getElementById("ptable").rows[x].cells[1].innerHTML=document.getElementById("mvmt").value;
+                document.getElementById("pcnm").value="";
+                document.getElementById("mvmt").value="";
+            }
+        </script>
+        <div class="container text-light">
+            <h2>Chess Pieces</h2>           
+            <table class="table table-bordered bg-secondary" id="ptable">
+                <thead>
+                    <tr><th class="col-sm-4">Piece Name</th><th class="col-sm-8">Movement</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>King</td>       <td>Moves one in any direction, royal</td></tr>
+                    <tr><td>Queen</td>      <td>Moves like a bishop and rook</td></tr>
+                    <tr><td>Bishop</td>     <td>Moves as far as desired diagonally </td></tr>
+                    <tr><td>Knight</td>     <td>Moves 2 in one direction, then 1 in another</td></tr>
+                    <tr><td>Rook</td>       <td>Moves as far as desired orthogonally</td></tr>
+                    <tr><td>Pawn</td>       <td>Moves 1 forward Can move 2 on first move attacks 1 diagonally</td></tr>
+                </tbody>
+            </table>
+            <form>
+                <div class="form-row">
+                    <div class="col col-sm-4 "><input type="text" class="form-control bg-dark text-light" id="pcnm" placeholder="Enter Piece Name" name="pcnm"></div>
+                    <div class="col col-sm-8"><input type="text" class="form-control bg-dark text-light" id="mvmt" placeholder="Enter Movement" name="mvmt"></div>
+                </div>
+            </form><button type="button" class="btn btn-dark btn-outline-light" onclick="newtr()">Add piece to table</button>
+        </div>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
